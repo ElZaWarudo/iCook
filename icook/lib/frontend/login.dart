@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:icook/frontend/register.dart';
-import 'home.dart';
+import 'package:icook/Login/login_state.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
-  String _email, password;
-  final _formKey = GlobalKey<FormState>();
+  final Function onLoginSuccess;
+
+  const LoginPage({Key key, this.onLoginSuccess}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,6 @@ class LoginPage extends StatelessWidget {
           iconTheme:
               new IconThemeData(color: Color.fromRGBO(235, 236, 192, 1))),
       body: Form(
-        key: _formKey,
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
@@ -28,7 +28,8 @@ class LoginPage extends StatelessWidget {
               width: 120.0,
               decoration: new BoxDecoration(
                 image: new DecorationImage(
-                    image: new NetworkImage('https://fotos.subefotos.com/77b04563f892571f18778b505abaf8a1o.jpg'),
+                    image: new NetworkImage(
+                        'https://fotos.subefotos.com/77b04563f892571f18778b505abaf8a1o.jpg'),
                     fit: BoxFit.cover),
                 borderRadius: new BorderRadius.circular(100.0),
               ),
@@ -96,10 +97,7 @@ class LoginPage extends StatelessWidget {
                         left: 20.0, right: 5.0, top: 10.0),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomePage()));
+
                       },
                       child: new Container(
                           alignment: Alignment.center,
@@ -136,11 +134,7 @@ class LoginPage extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 18.0),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Register(),
-                            ));
+                        onLoginSuccess();
                       },
                       child: new Text("Create A New Account ",
                           style: new TextStyle(

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1017405940646-dkb8ssr60sfcj332aoe18dt3vtfuiou6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cook.icook",
+            "certificate_hash": "7307170bdecfcd76983343ed0ac52eb6e7d1afdd"
+          }
+        },
+        {
           "client_id": "1017405940646-sevic047e6ipt1hen3jh83enrj2fialh.apps.googleusercontent.com",
           "client_type": 3
         }

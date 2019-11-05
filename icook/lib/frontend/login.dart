@@ -30,7 +30,7 @@ class LoginPage extends StatelessWidget {
               decoration: new BoxDecoration(
                 image: new DecorationImage(
                     image: new NetworkImage(
-                        'https://fotos.subefotos.com/77b04563f892571f18778b505abaf8a1o.jpg'),
+                        'https://thumbs.subefotos.com/01abd3b6d8a7e97274c4790daaa6f811o.jpg'),
                     fit: BoxFit.cover),
                 borderRadius: new BorderRadius.circular(100.0),
               ),

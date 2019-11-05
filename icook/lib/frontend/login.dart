@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:icook/Login/login_state.dart';
+import 'package:icook/frontend/register.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
@@ -134,7 +135,11 @@ class LoginPage extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 18.0),
                     child: GestureDetector(
                       onTap: () {
-                        onLoginSuccess();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Register(),
+                            ),);
                       },
                       child: new Text("Create A New Account ",
                           style: new TextStyle(

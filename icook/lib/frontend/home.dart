@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icook/backend/User.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -6,10 +7,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _bottomNavIndex = 1;
+  int _bottomNavIndex = 0;
+  final List<Widget> _children=[
+    MainContent(),
+    User(),
+  ];
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      body: _children[_bottomNavIndex],
       bottomNavigationBar: new BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         fixedColor: Color(0XFF29D091),
@@ -26,14 +32,6 @@ class _HomePageState extends State<HomePage> {
               title: new Text(''), icon: new Icon(Icons.account_box))
         ],
       ),
-      appBar: new AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-          leading: IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () => Navigator.pop(context)),
-          iconTheme: new IconThemeData(color: Color(0xFF18D191))),
-      body: MainContent(),
     );
   }
 }

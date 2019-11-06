@@ -74,11 +74,11 @@ class MyHomePage extends StatelessWidget {
                           alignment: Alignment.center,
                           height: 60.0,
                           decoration: new BoxDecoration(
-                              color: Color.fromRGBO(235, 236, 192, 1),
+                              color: new Color(0xffA60000),
                               borderRadius: new BorderRadius.circular(9.0)),
                           child: new Text("Sign In With Email",
                               style: new TextStyle(
-                                  fontSize: 20.0, color: Colors.black))),
+                                  fontSize: 20.0, color: Colors.white))),
                     ),
                   ),
                 )

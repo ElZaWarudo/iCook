@@ -4,7 +4,7 @@ class CloudFireStoreAPI {
   BD_query(List X) {
     return Firestore.instance
         .collection('Recetas')
-        .where("Ingredientes", isEqualTo: X)
+        //.where("Ingredientes", isEqualTo: Lista(ingredientesString.Ingredientes_p)
         .getDocuments();
   }
 }

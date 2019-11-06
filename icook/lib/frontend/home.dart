@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:icook/backend/User.dart';
+import 'package:icook/backend/providers/ingredientes_provider.dart';
+import 'package:icook/frontend/ver_receta.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -8,7 +11,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _bottomNavIndex = 0;
-  final List<Widget> _children=[
+  final List<Widget> _children = [
     MainContent(),
     User(),
   ];
@@ -18,7 +21,7 @@ class _HomePageState extends State<HomePage> {
       body: _children[_bottomNavIndex],
       bottomNavigationBar: new BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        fixedColor: Color(0XFF29D091),
+        fixedColor: Color(0xffA60000),
         currentIndex: _bottomNavIndex,
         onTap: (int index) {
           setState(() {
@@ -37,9 +40,11 @@ class _HomePageState extends State<HomePage> {
 }
 
 class MainContent extends StatelessWidget {
+  TextEditingController controlador = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return new ListView(
+    final ingredienteString = Provider.of<IngredientesString>(context);
+      return new ListView(
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0),
@@ -60,10 +65,36 @@ class MainContent extends StatelessWidget {
               new SizedBox(
                 height: 10.0,
               ),
-              new TextField(
-                decoration: InputDecoration(
-                  icon: new Icon(Icons.search),
-                ),
+              new Row(
+                children: <Widget>[
+                  Container(
+                    width: 250,
+                    child: TextField(
+                      controller: controlador,
+                      decoration: InputDecoration(
+                        icon: new Icon(Icons.search),
+                      ),
+                    ),
+                  ),
+                  new Padding(
+                    padding: EdgeInsets.only(left: 13),
+                    child: new RaisedButton(
+                      onPressed: () {
+                        ingredienteString.Ingredientes_p=controlador.text;
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => VerReceta(),
+                          ),
+                        );
+                      },
+                      child: new Text(
+                        "Buscar",
+                        style: new TextStyle(fontSize: 18),
+                      ),
+                    ),
+                  )
+                ],
               ),
               new SizedBox(
                 height: 15.0,
@@ -76,7 +107,7 @@ class MainContent extends StatelessWidget {
                   new Expanded(
                       child: new Text(
                     "View All",
-                    style: new TextStyle(color: Color(0XFF2BD093)),
+                    style: new TextStyle(color: Color(0xffA60000)),
                     textAlign: TextAlign.end,
                   ))
                 ],
@@ -162,100 +193,6 @@ class MainContent extends StatelessWidget {
               new SizedBox(
                 height: 15.0,
               ),
-              /*Row(
-                children: <Widget>[
-                  new Expanded(
-                      child: new Text("Popular Trending",
-                          style: new TextStyle(fontSize: 18.0))),
-                  new Expanded(
-                      child: new Text(
-                    "View All",
-                    style: new TextStyle(color: Color(0XFF2BD093)),
-                    textAlign: TextAlign.end,
-                  ))
-                ],
-              ),
-              new SizedBox(
-                height: 10.0,
-              ),
-              Row(
-                children: <Widget>[
-                  new Expanded(
-                    child: Container(
-                      height: 150.0,
-                      child: new Column(
-                        children: <Widget>[
-                          new Container(
-                            height: 100.0,
-                            decoration: new BoxDecoration(
-                                borderRadius: new BorderRadius.circular(5.0),
-                                image: new DecorationImage(
-                                    image: new NetworkImage(
-                                        'https://s1.cdn.autoevolution.com/images/gallery/LEXUS-HS-250h-3892_26.jpg'),
-                                    fit: BoxFit.cover)),
-                          ),
-                          new Text(
-                            "Motors",
-                            style: new TextStyle(fontSize: 16.0),
-                            textAlign: TextAlign.center,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  new SizedBox(
-                    width: 5.0,
-                  ),
-                  new Expanded(
-                    child: Container(
-                      height: 150.0,
-                      child: new Column(
-                        children: <Widget>[
-                          new Container(
-                            height: 100.0,
-                            decoration: new BoxDecoration(
-                                borderRadius: new BorderRadius.circular(5.0),
-                                image: new DecorationImage(
-                                    image: new NetworkImage(
-                                        'https://d3tvpxjako9ywy.cloudfront.net/blog/content/uploads/2015/03/company-culture-why-it-matters.jpg?av=6219bb831e993c907ca622baef062556'),
-                                    fit: BoxFit.cover)),
-                          ),
-                          new Text("Jobs",
-                              style: new TextStyle(fontSize: 16.0),
-                              textAlign: TextAlign.center)
-                        ],
-                      ),
-                    ),
-                  ),
-                  new SizedBox(
-                    width: 5.0,
-                  ),
-                  new Expanded(
-                    child: Container(
-                      height: 150.0,
-                      child: new Column(
-                        children: <Widget>[
-                          new Container(
-                            height: 100.0,
-                            decoration: new BoxDecoration(
-                                borderRadius: new BorderRadius.circular(5.0),
-                                image: new DecorationImage(
-                                    image: new NetworkImage(
-                                        'http://images4.fanpop.com/image/photos/21600000/Electronics-hd-wallpaper-21627626-1920-1200.jpg'),
-                                    fit: BoxFit.cover)),
-                          ),
-                          new Text('Electronics',
-                              style: new TextStyle(fontSize: 16.0),
-                              textAlign: TextAlign.center)
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              new SizedBox(
-                height: 15.0,
-              ),*/
               Row(
                 children: <Widget>[
                   new Expanded(

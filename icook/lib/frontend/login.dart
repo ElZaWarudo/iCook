@@ -12,14 +12,14 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
-      statusBarColor: Colors.orange, //or set color with: Color(0xFF0000FF)
+      statusBarColor: Color(0xffA60000), //or set color with: Color(0xFF0000FF)
     ));
     return new Scaffold(
       appBar: new AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0.0,
           iconTheme:
-              new IconThemeData(color: Color.fromRGBO(235, 236, 192, 1))),
+              new IconThemeData(color: Color(0xffA60000))),
       body: Form(
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -104,11 +104,11 @@ class LoginPage extends StatelessWidget {
                           alignment: Alignment.center,
                           height: 60.0,
                           decoration: new BoxDecoration(
-                              color: Color.fromRGBO(235, 236, 192, 1),
+                              color: Color(0xffA60000),
                               borderRadius: new BorderRadius.circular(9.0)),
                           child: new Text("Login",
                               style: new TextStyle(
-                                  fontSize: 20.0, color: Colors.black))),
+                                  fontSize: 20.0, color: Colors.white))),
                     ),
                   ),
                 ),
@@ -121,8 +121,8 @@ class LoginPage extends StatelessWidget {
                         height: 60.0,
                         child: new Text("Forgot Password?",
                             style: new TextStyle(
-                                fontSize: 17.0,
-                                color: Color.fromRGBO(235, 236, 192, 1)))),
+                                fontSize: 18.0,
+                                color: Color(0xffA60000)))),
                   ),
                 )
               ],
@@ -143,8 +143,8 @@ class LoginPage extends StatelessWidget {
                       },
                       child: new Text("Create A New Account ",
                           style: new TextStyle(
-                              fontSize: 17.0,
-                              color: Color.fromRGBO(235, 236, 192, 1),
+                              fontSize: 18.0,
+                              color: Color(0xffA60000),
                               fontWeight: FontWeight.bold)),
                     ),
                   ),

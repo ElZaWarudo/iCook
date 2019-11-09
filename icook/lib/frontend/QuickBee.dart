@@ -34,11 +34,11 @@ class MyHomePage extends StatelessWidget {
                   height: 150.0,
                   width: 150.0,
                   decoration: new BoxDecoration(
-                    image: new DecorationImage(
-                        image: new NetworkImage(
-                            'https://thumbs.subefotos.com/01abd3b6d8a7e97274c4790daaa6f811o.jpg'),
-                        fit: BoxFit.cover),
+
                     borderRadius: new BorderRadius.circular(80.0),
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/logo.png",)
+                    )
                   ),
                 ),
               ],
@@ -48,10 +48,7 @@ class MyHomePage extends StatelessWidget {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0, bottom: 80.0),
-                  child: new Text(
-                    "¡COOK",
-                    style: new TextStyle(fontSize: 30.0),
-                  ),
+
                 )
               ],
             ),

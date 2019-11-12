@@ -34,12 +34,9 @@ class MyHomePage extends StatelessWidget {
                   height: 150.0,
                   width: 150.0,
                   decoration: new BoxDecoration(
-
-                    borderRadius: new BorderRadius.circular(80.0),
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/logo.png",)
-                    )
-                  ),
+                      borderRadius: new BorderRadius.circular(80.0),
+                      image: DecorationImage(
+                          image: AssetImage("assets/images/logo.png"))),
                 ),
               ],
             ),
@@ -48,7 +45,6 @@ class MyHomePage extends StatelessWidget {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0, bottom: 80.0),
-
                 )
               ],
             ),
@@ -104,10 +100,11 @@ class MyHomePage extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         left: 10.0, right: 20.0, top: 10.0),
                     child: Consumer<LoginState>(
-                      builder: (BuildContext context, LoginState value, Widget child) {
-                        if (value.isLoading()){
+                      builder: (BuildContext context, LoginState value,
+                          Widget child) {
+                        if (value.isLoading()) {
                           return CircularProgressIndicator();
-                        }else{
+                        } else {
                           return child;
                         }
                       },

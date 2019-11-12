@@ -1,38 +1,17 @@
-import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:icook/backend/Ingrediente.dart';
 
 class Receta {
-  String nombre, descripcion, id;
+  String nombre, descripcion, id, link;
   int calorias, tiempoPreparacion;
   String tipo;
-  DateTime hora;
+  Timestamp hora;
   List<Ingrediente> ingredientes = new List<Ingrediente>();
 
-  Receta ({
-    Key key,
-    @required this.nombre,
-    @required this.descripcion,
-    @required this.calorias,
-    @required this.tiempoPreparacion,
-    @required this.tipo,
-    @required this.hora,
-  });
 
-  Receta.Try({
-    Key key,
-    @required this.nombre,
-    @required this.descripcion,
-    @required this.calorias,
-    @required this.tiempoPreparacion,
-    @required this.tipo,
-  });
+  Receta(this.nombre, this.descripcion,  this.calorias,
+      this.tiempoPreparacion, this.tipo, this.hora, this.ingredientes, this.link);
 
-  Receta.Prototype (int calorias, int tiempoPreparacion, String tipo, List ingredientes){
-    this.calorias= calorias;
-    this.tiempoPreparacion=tiempoPreparacion;
-    this.tipo=tipo;
-    this.ingredientes=ingredientes;
-  }
   void addIngredient(Ingrediente ingrediente){
     ingredientes.add(ingrediente);
   }
@@ -49,7 +28,7 @@ class Receta {
       if(ing[i]!=','){
         palabrita+=ing[i];
       }else{
-        Ingrediente protoIngrediente = new Ingrediente(palabrita);
+        Ingrediente protoIngrediente = new Ingrediente.Try(palabrita);
         ingredientes.add(protoIngrediente);
         palabrita="";
       }

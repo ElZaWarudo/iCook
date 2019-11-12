@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icook/backend/User.dart';
 import 'package:icook/backend/providers/ingredientes_provider.dart';
+import 'package:icook/frontend/ver_consulta.dart';
 import 'package:icook/frontend/ver_receta.dart';
 import 'package:provider/provider.dart';
 
@@ -44,7 +45,7 @@ class MainContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ingredienteString = Provider.of<IngredientesString>(context);
-      return new ListView(
+    return new ListView(
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0),
@@ -84,7 +85,7 @@ class MainContent extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => VerReceta(),
+                            builder: (context) => VerConsulta(),
                           ),
                         );
                       },

@@ -1,10 +1,14 @@
 class Ingrediente{
   String nombre;
   int cantidad;
-  int serial; //1=liquidos 2=peso 3=cantidad
+  int serial;
+
+  Ingrediente(this.nombre, this.cantidad,
+      this.serial); //1=liquidos 2=peso 3=cantidad
 
 
-  Ingrediente(this.nombre);
+
+  Ingrediente.Try(this.nombre);
 
 
 

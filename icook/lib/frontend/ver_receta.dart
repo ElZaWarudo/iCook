@@ -17,7 +17,7 @@ class _VerRecetaState extends State<VerReceta> {
 
     return Scaffold(
       body: StreamBuilder(
-        stream: Firestore.instance.collection('Recetas').where('Ingredientes', isEqualTo: Lista(ingredientesString.Ingredientes_p)).snapshots(),
+        stream: Firestore.instance.collection('Recetas').where('IngredienteName', isEqualTo: Lista(ingredientesString.Ingredientes_p)).snapshots(),
         builder: (context, snapshot){
           if(!snapshot.hasData) return Text('No encontrado', style: TextStyle(fontSize: 22),);
           return Column(
@@ -28,7 +28,7 @@ class _VerRecetaState extends State<VerReceta> {
               ),
               Text("Ingredientes: "+ToStringIngredientes(snapshot.data.documents[0]['Ingredientes']), style: TextStyle(fontSize: 15),),
               Text("Descripcion: "+snapshot.data.documents[0]['Descripcion'], style: TextStyle(fontSize: 15),),
-              Text("Tiempo de preparacion: "+snapshot.data.documents[0]['TiempoPreparacion']+" minutos", style: TextStyle(fontSize: 15),),
+              Text("Tiempo de preparacion: "+snapshot.data.documents[0]['TiempoPreparacion'].toString()+" minutos", style: TextStyle(fontSize: 15),),
             ],
           );
         },

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:icook/backend/User.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:icook/frontend/User.dart';
 import 'package:icook/backend/providers/ingredientes_provider.dart';
 import 'package:icook/frontend/ver_consulta.dart';
-import 'package:icook/frontend/ver_receta.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -31,9 +31,9 @@ class _HomePageState extends State<HomePage> {
         },
         items: [
           new BottomNavigationBarItem(
-              title: new Text(''), icon: new Icon(Icons.home)),
+              title: new Text(''), icon: new Icon(FontAwesomeIcons.book)),
           new BottomNavigationBarItem(
-              title: new Text(''), icon: new Icon(Icons.account_box))
+              title: new Text(''), icon: new Icon(FontAwesomeIcons.solidUserCircle))
         ],
       ),
     );
@@ -73,7 +73,7 @@ class MainContent extends StatelessWidget {
                     child: TextField(
                       controller: controlador,
                       decoration: InputDecoration(
-                        icon: new Icon(Icons.search),
+                        icon: new Icon(FontAwesomeIcons.search),
                       ),
                     ),
                   ),

@@ -30,6 +30,7 @@ class RecipeSinglePage extends StatelessWidget {
   List<Receta> Recetas;
   int index;
 
+
   RecipeSinglePage(this.Recetas,this.index);
   final Color icon = Color(0xffEF412D);
   final Color color3 = Color(0xffFFD54F);

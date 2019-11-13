@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class Subida extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -8,12 +7,13 @@ class Subida extends StatelessWidget {
         body: Stack(
       children: <Widget>[
         _crearFondo(context),
-        _loginForm(context),
+        FormularioReceta(context),
       ],
     ));
   }
 
-  Widget _loginForm(BuildContext context) {
+  Widget FormularioReceta(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
     final size = MediaQuery.of(context).size;
 
     return SingleChildScrollView(
@@ -38,27 +38,30 @@ class Subida extends StatelessWidget {
                       offset: Offset(0.0, 5.0),
                       spreadRadius: 3.0)
                 ]),
-            child: Column(
-              children: <Widget>[
-                Text('INGRESE DATOS', style: TextStyle(fontSize: 20.0)),
-                SizedBox(height: 40.0),
-                _crearNombre(),
-                SizedBox(height: 20.0),
-                _crearTipo(),
-                SizedBox(height: 20.0),
-                _crearTiempo(),
-                SizedBox(height: 20.0),
-                _crearIngredientes(),
-                SizedBox(height: 20.0),
-                _crearIngrePrinc(),
-                SizedBox(height: 20.0),
-                _crearPasos(),
-                SizedBox(height: 20.0),
-                _crearBoton(),
-                SizedBox(height: 20.0),
-              ],
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: <Widget>[
+                  Text('INGRESE DATOS', style: TextStyle(fontSize: 20.0)),
+                  SizedBox(height: 40.0),
+                  _crearNombre(),
+                  SizedBox(height: 20.0),
+                  _crearTipo(),
+                  SizedBox(height: 20.0),
+                  _crearTiempo(),
+                  SizedBox(height: 20.0),
+                  _crearIngredientes(),
+                  SizedBox(height: 20.0),
+                  _crearIngrePrinc(),
+                  SizedBox(height: 20.0),
+                  _crearPasos(),
+                  SizedBox(height: 20.0),
+                  _crearBoton(),
+                  SizedBox(height: 20.0),
+                ],
+              ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -67,7 +70,7 @@ class Subida extends StatelessWidget {
   Widget _crearNombre() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
-      child: TextField(
+      child: TextFormField(
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
           icon: Icon(
@@ -77,6 +80,13 @@ class Subida extends StatelessWidget {
           hintText: 'Nombre ',
           labelText: 'Nombre de Receta',
         ),
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Campo obligatorio';
+          } else {
+            return null;
+          }
+        },
       ),
     );
   }
@@ -84,7 +94,7 @@ class Subida extends StatelessWidget {
   Widget _crearTipo() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
-      child: TextField(
+      child: TextFormField(
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
           icon: Icon(
@@ -94,6 +104,13 @@ class Subida extends StatelessWidget {
           hintText: 'Tipo ',
           labelText: 'Esccribir tipo',
         ),
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Campo obligatorio';
+          } else {
+            return null;
+          }
+        },
       ),
     );
   }
@@ -101,7 +118,7 @@ class Subida extends StatelessWidget {
   Widget _crearTiempo() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
-      child: TextField(
+      child: TextFormField(
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
           icon: Icon(
@@ -111,6 +128,13 @@ class Subida extends StatelessWidget {
           hintText: 'Tiempo de la Receta ',
           labelText: 'Escribir Tiempo',
         ),
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Campo obligatorio';
+          } else {
+            return null;
+          }
+        },
       ),
     );
   }
@@ -118,7 +142,7 @@ class Subida extends StatelessWidget {
   Widget _crearIngredientes() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
-      child: TextField(
+      child: TextFormField(
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
           icon: Icon(
@@ -128,6 +152,13 @@ class Subida extends StatelessWidget {
           hintText: 'Ingrediente1,Ingrediente2 ',
           labelText: 'Esccribir Ingredientes',
         ),
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Campo obligatorio';
+          } else {
+            return null;
+          }
+        },
       ),
     );
   }
@@ -135,7 +166,7 @@ class Subida extends StatelessWidget {
   Widget _crearIngrePrinc() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
-      child: TextField(
+      child: TextFormField(
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
           icon: Icon(
@@ -145,6 +176,13 @@ class Subida extends StatelessWidget {
           hintText: 'Ingrediente Principal ',
           labelText: 'Esccribir Ingrediente',
         ),
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Campo obligatorio';
+          } else {
+            return null;
+          }
+        },
       ),
     );
   }
@@ -152,7 +190,7 @@ class Subida extends StatelessWidget {
   Widget _crearPasos() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
-      child: TextField(
+      child: TextFormField(
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
           icon: Icon(
@@ -162,6 +200,13 @@ class Subida extends StatelessWidget {
           hintText: 'Pasos de Receta ',
           labelText: 'Escribir Pasos',
         ),
+        validator: (value) {
+          if (value.isEmpty) {
+            return 'Campo obligatorio';
+          } else {
+            return null;
+          }
+        },
       ),
     );
   }

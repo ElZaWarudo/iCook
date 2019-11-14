@@ -1,11 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:icook/backend/Ingrediente.dart';
 
 class Receta {
   String nombre, descripcion, id, link;
   int calorias, tiempoPreparacion;
   String tipo;
-  Timestamp hora;
+  DateTime hora;
   List<Ingrediente> ingredientes = new List<Ingrediente>();
 
 

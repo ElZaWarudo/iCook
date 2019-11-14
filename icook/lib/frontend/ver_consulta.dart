@@ -62,7 +62,7 @@ class VerConsulta extends StatelessWidget {
                   Ingredientes.add(loquesea);
                 }
                 Receta NuevaReceta = new Receta(Nombre, Descripcion, Calorias,
-                    TiempoPreparacion, Tipo, Hora, Ingredientes, Link);
+                    TiempoPreparacion, Tipo, Hora.toDate(), Ingredientes, Link);
                 recetas.add(NuevaReceta);
               }
               return Lists(recetas);

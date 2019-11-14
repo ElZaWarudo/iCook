@@ -110,7 +110,7 @@ class MyHomePage extends StatelessWidget {
                       },
                       child: GestureDetector(
                         onTap: () {
-                          Provider.of<LoginState>(context).login();
+                          Provider.of<LoginState>(context).googleLogin();
                         },
                         child: new Container(
                             alignment: Alignment.center,

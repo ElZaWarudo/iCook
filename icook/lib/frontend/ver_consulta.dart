@@ -52,7 +52,9 @@ class VerConsulta extends StatelessWidget {
                 Hora = snapshot.data.documents[i]['Hora'];
                 Link = snapshot.data.documents[i]['Link'];
                 List<Ingrediente> Ingredientes = new List();
-                for (int j = 0; j <= snapshot.data.documents.length - 1; j++) {
+                for (int j = 0;
+                    j < snapshot.data.documents[i]['IngredienteName'].length;
+                    j++) {
                   IngredienteName =
                       snapshot.data.documents[i]['IngredienteName'][j];
                   Cantidad = snapshot.data.documents[i]['Cantidad'][j];
@@ -97,8 +99,8 @@ class Item {
   final String image;
   final int index;
 
-
-  Item.Try(this.nombre, this.tipo, this.calorias, this.tiempo, this.image, this.index);
+  Item.Try(this.nombre, this.tipo, this.calorias, this.tiempo, this.image,
+      this.index);
 }
 
 class Lists extends StatelessWidget {
@@ -108,11 +110,16 @@ class Lists extends StatelessWidget {
   Lists(this._recetas);
 
   void creacionRec() {
-    for (int i =0; i< _recetas.length;i++) {
+    for (int i = 0; i < _recetas.length; i++) {
       Receta rec;
 
-      Item Objeto = new Item.Try(_recetas[i].nombre, _recetas[i].tipo, _recetas[i].calorias.toString(),
-          _recetas[i].tiempoPreparacion.toString(), "", i);
+      Item Objeto = new Item.Try(
+          _recetas[i].nombre,
+          _recetas[i].tipo,
+          _recetas[i].calorias.toString(),
+          _recetas[i].tiempoPreparacion.toString(),
+          _recetas[i].link,
+          i);
       _data.add(Objeto);
     }
   }
@@ -214,7 +221,7 @@ class Lists extends StatelessWidget {
                             width: 3,
                           ),
                           Text(
-                            item.tiempo+" min",
+                            item.tiempo + " min",
                             style: TextStyle(fontSize: 13),
                           ),
                         ],

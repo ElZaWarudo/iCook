@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -52,6 +53,7 @@ class LoginState with ChangeNotifier{
     if (x){
       Result =  await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: contrasena).whenComplete(loadingFalse);
       print('Signed in: ${Result.user.displayName}');
+      guardarEmail(Result.user.email);
     }
 
     if(Result.user!= null) {
@@ -73,7 +75,7 @@ class LoginState with ChangeNotifier{
   }
 
   Future<FirebaseUser> _handleSignIn() async {
-    final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+    final GoogleSignInAccount googleUser = await _googleSignIn.signIn().whenComplete(loadingFalse);
     final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
 
     final AuthCredential credential = GoogleAuthProvider.getCredential(
@@ -83,6 +85,14 @@ class LoginState with ChangeNotifier{
 
     final FirebaseUser user = (await _auth.signInWithCredential(credential)).user;
     print("signed in " + user.displayName);
+    guardarEmail(user.email);
+
+    await Firestore.instance.collection("Usuarios").document().setData({
+      'Contraseña': '',
+      'Email': user.email,
+      'Nombre': user.displayName,
+      'Link': 'https://firebasestorage.googleapis.com/v0/b/icook-a5611.appspot.com/o/user-default.jpg?alt=media&token=9d06a888-351b-40bc-9f18-3b0cd0358841',
+    });
     return user;
   }
 
@@ -100,5 +110,10 @@ class LoginState with ChangeNotifier{
   obtenerInicio() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('valorInicio', _loggedIn);
+  }
+
+  guardarEmail(x) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('email', x);
   }
 }

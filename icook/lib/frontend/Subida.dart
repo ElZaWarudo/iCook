@@ -18,15 +18,6 @@ class _SubidaState extends State<Subida> {
   final int color = 0xffA60000;
   final databaseReference = Firestore.instance;
   final _formKey = GlobalKey<FormState>();
-  Key _knombre,
-      _ktipo,
-      _ktiempo,
-      _kingredientes,
-      _kdescripcion,
-      _kcalorias,
-      _kcantidad,
-      _kserial,
-      _klink;
   String _nombre = '',
       _tipo = '',
       _tiempo = '',
@@ -371,9 +362,9 @@ class _SubidaState extends State<Subida> {
                     onPressed: () {
                       final form = _formKey.currentState;
                       form.save();
-                      print('queso $_nombre');
                       _link = Provider.of<linkString>(context).link_p;
                       CrearReceta();
+                      Navigator.of(context).pop();
                     },
                   ),
                   SizedBox(height: 20.0),
@@ -475,8 +466,7 @@ class _SubirFotoState extends State<SubirFoto> {
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: GestureDetector(
         onTap: () {
-          obtenerImagen();
-          subirImagen(context);
+          obtenerImagen(context);
         },
         child: new Container(
             alignment: Alignment.center,
@@ -491,12 +481,13 @@ class _SubirFotoState extends State<SubirFoto> {
     );
   }
 
-  Future obtenerImagen() async {
+  Future obtenerImagen(BuildContext context) async {
     await ImagePicker.pickImage(source: ImageSource.gallery).then((image) {
       setState(() {
         _image = image;
       });
     });
+    subirImagen(context);
   }
 
   Future subirImagen(BuildContext context) async {
@@ -508,8 +499,8 @@ class _SubirFotoState extends State<SubirFoto> {
     firebaseStorageRef.getDownloadURL().then((fileURL) {
       setState(() {
         _link = fileURL;
+        Provider.of<linkString>(context).link_p = _link;
       });
     });
-    Provider.of<linkString>(context).link_p = _link;
   }
 }

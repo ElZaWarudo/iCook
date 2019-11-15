@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:icook/Login/login_state.dart';
+import 'package:icook/backend/providers/email_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:icook/frontend/register.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatelessWidget {
   final Function onLoginSuccess;
@@ -125,7 +127,7 @@ class _FormularioState extends State<Formulario> {
                     },
                   child: GestureDetector(
                     onTap: () {
-                      Provider.of<LoginState>(context).validateAndSubmit(validateAndSave(), _email, _contrasena);
+                      darle();
                     },
                     child: new Container(
                         alignment: Alignment.center,
@@ -181,5 +183,12 @@ class _FormularioState extends State<Formulario> {
         ],
       ),
     );
+  }
+
+  void darle()async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    Provider.of<LoginState>(context).validateAndSubmit(validateAndSave(), _email, _contrasena);
+    prefs.setString('email', _email);
+    Provider.of<emailString>(context).email_p=prefs.getString('email');
   }
 }

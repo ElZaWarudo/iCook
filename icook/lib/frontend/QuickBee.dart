@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:icook/Login/login_state.dart';
+import 'package:icook/backend/providers/email_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'login.dart';
 
 class QuickBee extends StatelessWidget {
@@ -110,7 +112,7 @@ class MyHomePage extends StatelessWidget {
                       },
                       child: GestureDetector(
                         onTap: () {
-                          Provider.of<LoginState>(context).googleLogin();
+                          darle(context);
                         },
                         child: new Container(
                             alignment: Alignment.center,
@@ -131,5 +133,11 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void darle(context)async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    Provider.of<LoginState>(context).googleLogin();
+    Provider.of<emailString>(context).email_p=prefs.getString('email');
   }
 }

@@ -132,31 +132,6 @@ class RecipeSinglePage extends StatelessWidget {
                 height: 350,
                 child: Image.network(Recetas[index].link, fit: BoxFit.cover),),
             ),
-/*            Positioned(
-              top: 325,
-              left: 20,
-              child: CircleAvatar(
-                backgroundColor: Colors.white,
-                radius: 25,
-                child: IconButton(
-                  color: icon,
-                  onPressed: (){},
-                  icon: Icon(Icons.play_arrow,)),
-              ),
-            ),*/
-            Positioned(
-              top: 325,
-              right: 20,
-              child: RaisedButton(
-                child: Text("Read More".toUpperCase()),
-                color: Colors.white,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(
-                  ));
-                },
-              ),
-            ),
             Container(height: 70.0, child: AppBar(
               backgroundColor: Colors.transparent,
               elevation: 0,

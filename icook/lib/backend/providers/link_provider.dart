@@ -8,6 +8,7 @@ class linkString with ChangeNotifier{
 
   set link_p(String value) {
     _link_p = value;
+    notifyListeners();
   }
 
 

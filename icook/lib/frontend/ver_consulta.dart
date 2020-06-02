@@ -5,6 +5,7 @@ import 'package:icook/backend/Receta.dart';
 import 'package:icook/backend/providers/ingredientes_provider.dart';
 import 'package:icook/frontend/Muestracion.dart';
 import 'package:provider/provider.dart';
+import 'package:icook/backend/Iterator/Iterator.dart';
 
 class VerConsulta extends StatelessWidget {
   // This widget is the root of your application.
@@ -67,7 +68,8 @@ class VerConsulta extends StatelessWidget {
                     TiempoPreparacion, Tipo, Hora.toDate(), Ingredientes, Link);
                 recetas.add(NuevaReceta);
               }
-              return Lists(recetas);
+              Iterador iterador = new Iterador(recetas);
+              return Lists(iterador);
             }
           },
         ),
@@ -104,21 +106,22 @@ class Item {
 }
 
 class Lists extends StatelessWidget {
-  List<Receta> _recetas = new List();
+  Iterador _recetas;
   List<Item> _data = new List();
 
   Lists(this._recetas);
 
   void creacionRec() {
-    for (int i = 0; i < _recetas.length; i++) {
-      Receta rec;
+    while(_recetas.hasNext()) {
+      int i=_recetas.getposicion();
+      Receta Rec=_recetas.next();
 
       Item Objeto = new Item.Try(
-          _recetas[i].nombre,
-          _recetas[i].tipo,
-          _recetas[i].calorias.toString(),
-          _recetas[i].tiempoPreparacion.toString(),
-          _recetas[i].link,
+         Rec.nombre,
+          Rec.tipo,
+          Rec.calorias.toString(),
+          Rec.tiempoPreparacion.toString(),
+          Rec.link,
           i);
       _data.add(Objeto);
     }
@@ -140,7 +143,7 @@ class Lists extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Muestriar(_recetas, index),
+                  builder: (context) => Muestriar(_recetas.getrecetas(), index),
                 ));
           },
           child: Card(

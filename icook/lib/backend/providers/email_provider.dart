@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class emailString with ChangeNotifier{
@@ -11,5 +12,10 @@ class emailString with ChangeNotifier{
     notifyListeners();
   }
 
+  Future cargarEmail() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    _email_p = prefs.getString('email');
+    notifyListeners();
+  }
 
 }

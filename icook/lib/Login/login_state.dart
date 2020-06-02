@@ -91,7 +91,7 @@ class LoginState with ChangeNotifier{
       'Contraseña': '',
       'Email': user.email,
       'Nombre': user.displayName,
-      'Link': 'https://firebasestorage.googleapis.com/v0/b/icook-a5611.appspot.com/o/user-default.jpg?alt=media&token=9d06a888-351b-40bc-9f18-3b0cd0358841',
+      'Foto': 'https://firebasestorage.googleapis.com/v0/b/icook-a5611.appspot.com/o/user-default.jpg?alt=media&token=9d06a888-351b-40bc-9f18-3b0cd0358841',
     });
     return user;
   }
@@ -116,4 +116,6 @@ class LoginState with ChangeNotifier{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('email', x);
   }
+
+
 }

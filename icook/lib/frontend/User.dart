@@ -83,7 +83,7 @@ class _UserState extends State<User> {
                                 width: 130,
                                 height: 130,
                                 child: Image.network(
-                                  _link,
+                                  '',
                                   fit: BoxFit.cover,
                                 ),
                               ),

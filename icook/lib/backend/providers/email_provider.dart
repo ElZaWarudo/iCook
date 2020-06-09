@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
+//Patron Provider(Observador)
 class emailString with ChangeNotifier{
   String _email_p;
 

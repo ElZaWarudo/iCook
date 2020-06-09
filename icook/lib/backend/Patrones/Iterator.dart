@@ -1,4 +1,5 @@
 import 'package:icook/backend/Receta.dart';
+//Patron iterador
 class Iterador{
   List<Receta> _recetas;
   int _posicion;

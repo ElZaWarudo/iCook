@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-
+//Patron Provider(Observador)
 class linkString with ChangeNotifier{
   String _link_p;
 

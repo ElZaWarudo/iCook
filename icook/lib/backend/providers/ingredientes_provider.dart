@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-
+//Patron Provider(Observador)
 class IngredientesString with ChangeNotifier{
   String _Ingredientes_p;
 

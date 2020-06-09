@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:icook/backend/Patrones/Singleton.dart';
 import 'package:icook/backend/providers/link_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -40,7 +41,10 @@ class _SubidaState extends State<Subida> {
     }
     Receta receta = new Receta(_nombre, _descripcion, int.parse(_calorias),
         int.parse(_tiempo), _tipo, DateTime.now(), Ingredientes, _link);
-    recordReceta(receta, nombreIng, num, serial);
+    //Creacion del patron singleton para que sea una unica receta
+    Singleton RecetaUnica= Singleton.getSingleton(receta);
+    receta=null;//Limpieza de la receta
+    recordReceta(RecetaUnica.receta, nombreIng, num, serial);
   }
 
   ListaIng(String x) {

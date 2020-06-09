@@ -5,7 +5,7 @@ import 'package:icook/backend/Receta.dart';
 import 'package:icook/backend/providers/ingredientes_provider.dart';
 import 'package:icook/frontend/Muestracion.dart';
 import 'package:provider/provider.dart';
-import 'package:icook/backend/Iterator/Iterator.dart';
+import 'package:icook/backend/Patrones/Iterator.dart';
 
 class VerConsulta extends StatelessWidget {
   // This widget is the root of your application.
@@ -68,6 +68,7 @@ class VerConsulta extends StatelessWidget {
                     TiempoPreparacion, Tipo, Hora.toDate(), Ingredientes, Link);
                 recetas.add(NuevaReceta);
               }
+              //Aqui se crea el iterador para mostrar las recetas que vienen de la BD
               Iterador iterador = new Iterador(recetas);
               return Lists(iterador);
             }

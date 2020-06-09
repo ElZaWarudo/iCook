@@ -4,24 +4,22 @@ import 'package:icook/backend/providers/email_provider.dart';
 import 'package:icook/backend/providers/ingredientes_provider.dart';
 import 'package:icook/backend/providers/link_provider.dart';
 import 'package:icook/frontend/QuickBee.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'frontend/home.dart';
 import 'package:provider/provider.dart';
-import 'package:icook/backend/providers/email_provider.dart';
 
 void main() => runApp(First());
 
 class First extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<LoginState>(
-      builder: (BuildContext context) => LoginState(),
+    return ChangeNotifierProvider(
+      create: (BuildContext context) => LoginState(),
       child: ChangeNotifierProvider(
-        builder: (context) => IngredientesString(),
+        create: (context) => IngredientesString(),
         child: ChangeNotifierProvider(
-          builder: (context) => linkString(),
+          create: (context) => linkString(),
           child: ChangeNotifierProvider(
-            builder: (context) => emailString(),
+            create: (context) => emailString(),
             child: MaterialApp(
               routes: {
                 '/': (BuildContext context) {
